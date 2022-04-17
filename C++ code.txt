@@ -1,0 +1,36 @@
+// C++ code
+//
+int vGasSensor = 0;
+int vTempSensor = 0;
+
+void setup()
+{
+  pinMode(A0, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(A1, INPUT);
+}
+
+void loop()
+{
+  vGasSensor = analogRead(A0);
+  if (vGasSensor >= 25)
+  {
+  	tone(7, 550, 1000);
+  	digitalWrite(10, HIGH);
+  }
+  else
+  {
+    digitalWrite(10, LOW);
+  }
+      
+  vTempSensor = 0.488155 * (analogRead(A1) - 20) - 40;
+  if (vTempSensor>=60)
+  {
+  	tone(7, 550, 1000);
+    digitalWrite(11, HIGH);
+  }
+  else
+  {
+   	digitalWrite(11, LOW); 
+  }  
+}
